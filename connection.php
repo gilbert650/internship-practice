@@ -1,9 +1,9 @@
 <?php
 // Database configuration
-$servername = "localhost"; // usually localhost
-$username = "root";        // your DB username
-$password = "";            // your DB password
-$dbname = "school";        // database name
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "student";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -13,7 +13,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Optional: display success message (comment out in production)
+// Optional success message (disable in production)
 // echo "Connected successfully";
-
 ?>

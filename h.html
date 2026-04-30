@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Front-End JS Examples</title>
+</head>
+<body>
+  <h2 id="title">Front-End JS Demo</h2>
+  <input id="inputField" placeholder="Type something" />
+  <button id="btn">Click Me</button>
+  <div id="output"></div>
+
+  <script>
+    // ===== Variables & Data Types =====
+    let name = "Alice";
+    const age = 25;
+    var country = "USA"; // older style
+
+    document.write("Name: " + name + ", Age: " + age + ", Country: " + country + "<br>");
+
+    // ===== DOM Manipulation =====
+    const title = document.getElementById("title");
+    const output = document.getElementById("output");
+    const input = document.getElementById("inputField");
+    const btn = document.getElementById("btn");
+
+    title.textContent = "Welcome to Front-End JS Demo!";
+    title.style.color = "blue";
+    title.classList.add("highlight");
+
+    // ===== Events =====
+    btn.addEventListener("click", function() {
+      const userInput = input.value;
+      output.innerHTML = `<p>You typed: ${userInput}</p>`;
+      document.write("Button clicked. Input: " + userInput + "<br>");
+    });
+
+    input.addEventListener("input", function(e) {
+      document.write("Input changed to: " + e.target.value + "<br>");
+    });
+
+    // ===== Arrays & Array Methods =====
+    let fruits = ["Apple", "Banana", "Cherry"];
+    fruits.push("Orange");
+    fruits.forEach(fruit => document.write("Fruit: " + fruit + "<br>"));
+    let filtered = fruits.filter(fruit => fruit.includes("a"));
+    document.write("Filtered Fruits: " + filtered.join(", ") + "<br>");
+
+    // ===== Strings =====
+    let msg = "   Hello World!   ";
+    document.write("String length: " + msg.length + "<br>");
+    document.write("Trimmed & UpperCase: " + msg.trim().toUpperCase() + "<br>");
+    document.write("Includes 'World': " + msg.includes("World") + "<br>");
+
+    // ===== Functions =====
+    function greet(person) {
+      return `Hello ${person}`;
+    }
+    const greetArrow = person => `Hi ${person}`;
+    document.write(greet(name) + "<br>");
+    document.write(greetArrow(name) + "<br>");
+
+    // ===== Objects =====
+    let personObj = {name: "Alice", age: 25, greet: function(){ document.write("Hi!<br>"); }};
+    document.write("Person name: " + personObj.name + "<br>");
+    document.write("Person age: " + personObj["age"] + "<br>");
+    personObj.city = "NY";
+    document.write("Person object: " + JSON.stringify(personObj) + "<br>");
+    delete personObj.age;
+    document.write("Person after delete: " + JSON.stringify(personObj) + "<br>");
+
+    // ===== Loops =====
+    for(let i = 0; i < 3; i++) document.write("For loop: " + i + "<br>");
+    let i = 0;
+    while(i < 3){ document.write("While loop: " + i + "<br>"); i++; }
+    let arr = [10,20,30];
+    for(let value of arr) document.write("For...of: " + value + "<br>");
+
+    // ===== Browser APIs =====
+    document.write("LocalStorage Example<br>");
+    localStorage.setItem("user", "Alice");
+    document.write("Stored User: " + localStorage.getItem("user") + "<br>");
+
+    // ===== setTimeout & setInterval =====
+    setTimeout(()=>document.write("Timeout after 2 sec<br>"), 2000);
+    let count = 0;
+    const interval = setInterval(() => {
+      document.write("Interval count: " + count + "<br>");
+      count++;
+      if(count > 2) clearInterval(interval);
+    }, 1000);
+
+    // ===== ES6+ Features =====
+    let [first, second] = fruits;
+    document.write("Destructured Fruits: " + first + ", " + second + "<br>");
+
+    const newFruits = [...fruits, "Mango"];
+    document.write("Spread Fruits: " + newFruits.join(", ") + "<br>");
+
+    const defaultFunc = (x=5) => x*2;
+    document.write("Default Parameter Function: " + defaultFunc() + "<br>");
+  </script>
+</body>
+</html>

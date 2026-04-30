@@ -1,5 +1,9 @@
- <?php
+<?php
 // Database configuration
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "student";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -11,19 +15,23 @@ if ($conn->connect_error) {
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get data from POST request and sanitize it
-    $name = $conn->real_escape_string($_POST['name']);
-    $email = $conn->real_escape_string($_POST['email']);
+
+    $fullname = $conn->real_escape_string($_POST['fullname']);
+    $gender = $conn->real_escape_string($_POST['gender']);
+    $age = $conn->real_escape_string($_POST['age']);
+    $class = $conn->real_escape_string($_POST['class']);
 
     // Insert query
-    $sql = "INSERT INTO students (name, email) VALUES ('$name', '$email')";
+    $sql = "INSERT INTO student (fullname, gender, age, class) 
+            VALUES ('$fullname', '$gender', '$age', '$class')";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully!";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $conn->error;
     }
 }
 
+// Close connection
 $conn->close();
 ?>
