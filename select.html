@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Database Data Display</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        background-color: #fff;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007BFF;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #e1f0ff;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Database Records</h1>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be populated by JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Example data retrieved from a database
+    const dbData = [
+        {id: 1, name: "Alice", email: "alice@example.com", age: 25},
+        {id: 2, name: "Bob", email: "bob@example.com", age: 30},
+        {id: 3, name: "Charlie", email: "charlie@example.com", age: 22},
+        {id: 4, name: "Diana", email: "diana@example.com", age: 28}
+    ];
+
+    const tableBody = document.querySelector("#data-table tbody");
+
+    dbData.forEach(item => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${item.id}</td>
+            <td>${item.name}</td>
+            <td>${item.email}</td>
+            <td>${item.age}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+</script>
+
+</body>
+</html>

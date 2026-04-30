@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "charter-governance": {
+      "command": "charter",
+      "args": [
+        "mcp-serve",
+        "--transport",
+        "stdio"
+      ]
+    }
+  }
+}
